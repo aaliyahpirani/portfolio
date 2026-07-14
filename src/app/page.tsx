@@ -15,33 +15,35 @@ export default function HomePage() {
 
       <section
         id="about"
-        className="mx-auto w-full max-w-7xl scroll-mt-24 px-5 py-24 md:px-8 md:py-32"
+        className="relative w-full scroll-mt-24 bg-bg-deep py-24 md:py-32"
       >
-        <FadeIn>
-          <p className="text-sm tracking-[0.16em] text-muted uppercase">
-            About me
-          </p>
-          <h2 className="mt-3 max-w-3xl font-[family-name:var(--font-display)] text-4xl leading-none tracking-[-0.03em] md:text-6xl">
-            Quiet compositions, clear type, and photographs that hold a place.
-          </h2>
-        </FadeIn>
+        <div className="mx-auto w-full max-w-7xl px-5 md:px-8">
+          <FadeIn>
+            <p className="text-sm tracking-[0.16em] text-muted uppercase">
+              About me
+            </p>
+            <h2 className="mt-3 max-w-3xl font-[family-name:var(--font-display)] text-4xl leading-none tracking-[-0.03em] md:text-6xl">
+              Quiet compositions, clear type, and photographs that hold a place.
+            </h2>
+          </FadeIn>
 
-        <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-[1.1fr_0.9fr] md:gap-16">
-          <FadeIn delay={0.08}>
-            <p className="max-w-xl text-lg leading-relaxed text-muted md:text-xl">
-              I&apos;m Aaliyah — a designer and photographer interested in how
-              light, pacing, and typography shape a story before anyone reads a
-              word. My work sits between brand systems and editorial
-              photography, always aiming for calm images with room to breathe.
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.16}>
-            <p className="max-w-md text-base leading-relaxed text-muted md:pt-2">
-              Whether I&apos;m building a visual identity or photographing a
-              landscape, I look for the same thing: a clear mood, honest detail,
-              and layouts that feel intentional rather than crowded.
-            </p>
-          </FadeIn>
+          <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-[1.1fr_0.9fr] md:gap-16">
+            <FadeIn delay={0.08}>
+              <p className="max-w-xl text-lg leading-relaxed text-muted md:text-xl">
+                I&apos;m Aaliyah — a designer and photographer interested in how
+                light, pacing, and typography shape a story before anyone reads a
+                word. My work sits between brand systems and editorial
+                photography, always aiming for calm images with room to breathe.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.16}>
+              <p className="max-w-md text-base leading-relaxed text-muted md:pt-2">
+                Whether I&apos;m building a visual identity or photographing a
+                landscape, I look for the same thing: a clear mood, honest detail,
+                and layouts that feel intentional rather than crowded.
+              </p>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
