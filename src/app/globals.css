@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Chicken Pie";
+  src: url("/fonts/ChickenPie.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Romantic";
+  src: url("/fonts/Romantic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Super Nugget";
+  src: url("/fonts/SuperNugget.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Imbue";
+  src: url("/fonts/Imbue-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Chicle";
+  src: url("/fonts/Chicle-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Birthstone";
+  src: url("/fonts/Birthstone-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sue Ellen Francisco";
+  src: url("/fonts/SueEllenFrancisco-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #f2efe9;
+  --bg-deep: #e8e2d6;
+  --ink: #12181f;
+  --muted: #5a6570;
+  --accent: #0f6e6a;
+  --accent-soft: #c5e4e1;
+  --surface: rgba(255, 255, 255, 0.55);
+  --line: rgba(18, 24, 31, 0.12);
+  --font-chicken-pie: "Chicken Pie", var(--font-display), sans-serif;
+  --font-romantic: "Romantic", var(--font-serif), serif;
+  --font-super-nugget: "Super Nugget", var(--font-display), sans-serif;
+  --font-imbue: "Imbue", var(--font-serif), serif;
+  --font-chicle: "Chicle", var(--font-display), sans-serif;
+  --font-birthstone: "Birthstone", var(--font-romantic), cursive;
+  --font-sue-ellen: "Sue Ellen Francisco", var(--font-birthstone), cursive;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-deep: var(--bg-deep);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background-color: var(--bg);
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"),
+    linear-gradient(165deg, #f7f3eb 0%, var(--bg) 40%, #e8dfd0 100%);
+  background-size: 160px 160px, 100% 100%;
+  background-blend-mode: soft-light, normal;
+  color: var(--ink);
+  font-family: var(--font-sans), sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
