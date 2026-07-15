@@ -21,193 +21,259 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 28,
-    restDelta: 0.001,
+  const smooth = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 32,
+    restDelta: 0.0001,
   });
 
-  const aaliyahAway = useTransform(
-    smoothProgress,
+  const nameX = useTransform(
+    smooth,
     [0, 1],
-    prefersReducedMotion ? ["0vw", "0vw"] : ["0vw", "-70vw"],
+    prefersReducedMotion ? ["0vw", "0vw"] : ["0vw", "-55vw"],
   );
-  const piraniAway = useTransform(
-    smoothProgress,
-    [0, 1],
-    prefersReducedMotion ? ["0vw", "0vw"] : ["0vw", "70vw"],
+  const nameOpacity = useTransform(
+    smooth,
+    [0, 0.75],
+    prefersReducedMotion ? [1, 1] : [1, 0.35],
   );
-  const scriptAway = useTransform(
-    smoothProgress,
+
+  const flowersX = useTransform(
+    smooth,
     [0, 1],
-    prefersReducedMotion ? ["0vw", "0vw"] : ["0vw", "-35vw"],
+    prefersReducedMotion ? ["0%", "0%"] : ["0%", "18%"],
+  );
+  const flowersY = useTransform(
+    smooth,
+    [0, 1],
+    prefersReducedMotion ? ["0%", "0%"] : ["0%", "-12%"],
+  );
+  const flowersRotate = useTransform(
+    smooth,
+    [0, 1],
+    prefersReducedMotion ? [0, 0] : [0, 8],
+  );
+
+  const portraitY = useTransform(
+    smooth,
+    [0, 1],
+    prefersReducedMotion ? ["0%", "0%"] : ["0%", "12%"],
+  );
+  const portraitScale = useTransform(
+    smooth,
+    [0, 1],
+    prefersReducedMotion ? [1, 1] : [1, 1.06],
+  );
+
+  const introX = useTransform(
+    smooth,
+    [0, 1],
+    prefersReducedMotion ? ["0vw", "0vw"] : ["0vw", "-18vw"],
+  );
+  const locationX = useTransform(
+    smooth,
+    [0, 1],
+    prefersReducedMotion ? ["0vw", "0vw"] : ["0vw", "14vw"],
+  );
+  const locationOpacity = useTransform(
+    smooth,
+    [0, 0.55],
+    prefersReducedMotion ? [1, 1] : [1, 0],
+  );
+  const greetingY = useTransform(
+    smooth,
+    [0, 1],
+    prefersReducedMotion ? ["0px", "0px"] : ["0px", "40px"],
+  );
+  const greetingOpacity = useTransform(
+    smooth,
+    [0, 0.5],
+    prefersReducedMotion ? [1, 1] : [1, 0],
+  );
+  const ctaOpacity = useTransform(
+    smooth,
+    [0, 0.4],
+    prefersReducedMotion ? [1, 1] : [1, 0],
+  );
+  const ctaY = useTransform(
+    smooth,
+    [0, 0.4],
+    prefersReducedMotion ? [0, 0] : [0, 24],
   );
 
   return (
     <section
       id="home"
       ref={sectionRef}
-      className="relative flex min-h-[100svh] scroll-mt-24 flex-col overflow-hidden px-5 pt-10 pb-8 md:px-10 md:pt-12 md:pb-10"
+      className="relative flex h-[100svh] scroll-mt-24 flex-col overflow-hidden bg-bg px-5 pt-8 pb-8 md:px-10 md:pt-10 md:pb-10"
     >
       <h1 className="sr-only">Aaliyah Pirani</h1>
 
-      {/* Portrait — large, bottom-right aligned with last name */}
+      {/* Corner flowers — top right, oversized and cropped */}
       <motion.div
-        initial={{ opacity: 0, y: 28 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.3, ease }}
-        className="pointer-events-none absolute right-[-4%] bottom-0 z-20 h-[78%] w-[min(88vw,36rem)] md:right-0 md:h-[85%] md:w-[min(48vw,40rem)]"
+        style={{ x: flowersX, y: flowersY, rotate: flowersRotate }}
+        className="pointer-events-none absolute -top-[18%] -right-[22%] z-10 h-[clamp(24rem,72vw,48rem)] w-[clamp(28rem,82vw,56rem)] md:-top-[17%] md:-right-[10%]"
       >
-        <Image
-          src="/images/portrait.png"
-          alt="Portrait of Aaliyah Pirani"
-          fill
-          priority
-          quality={100}
-          className="object-contain object-bottom drop-shadow-[18px_28px_40px_rgba(18,24,31,0.22)] mix-blend-lighten"
-          sizes="(max-width: 768px) 88vw, 40rem"
-        />
+        <motion.div
+          animate={
+            prefersReducedMotion
+              ? undefined
+              : { y: [0, -10, 0], rotate: [0, -1.5, 0] }
+          }
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="relative h-full w-full"
+        >
+          <Image
+            src="/icons/cornerflowers.png"
+            alt=""
+            fill
+            className="object-contain object-top-right mix-blend-lighten"
+            sizes="(max-width: 768px) 82vw, 56rem"
+            priority
+          />
+        </motion.div>
       </motion.div>
 
-      {/* Main stage */}
-      <div className="relative mx-auto flex w-full max-w-6xl flex-1 items-center justify-center">
-        {/* Greeting — big slanted handwriting behind */}
+      {/* Portrait — bottom-aligned, head sits on the name */}
+      <motion.div
+        style={{ y: portraitY, scale: portraitScale }}
+        className="pointer-events-none absolute bottom-0 left-1/2 z-20 h-[95%] w-[min(95vw,40rem)] -translate-x-1/2 md:h-[100%] md:w-[min(56vw,48rem)]"
+      >
         <motion.div
-          style={{ x: scriptAway }}
-          className="pointer-events-none absolute top-[16%] left-[-8%] z-[5] w-[120%] max-w-none md:top-[12%] md:left-[-6%]"
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
+          animate={
+            prefersReducedMotion
+              ? { opacity: 1, y: 0 }
+              : { opacity: 1, y: [0, -6, 0] }
+          }
+          transition={
+            prefersReducedMotion
+              ? { duration: 1, delay: 0.25, ease }
+              : {
+                  opacity: { duration: 1, delay: 0.25, ease },
+                  y: {
+                    duration: 6,
+                    delay: 1.2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                }
+          }
+          className="relative h-full w-full"
         >
+          <Image
+            src="/images/portrait.png"
+            alt="Portrait of Aaliyah Pirani"
+            fill
+            priority
+            quality={100}
+            className="object-contain object-bottom mix-blend-lighten"
+            sizes="(max-width: 768px) 95vw, 48rem"
+          />
+        </motion.div>
+      </motion.div>
+
+      <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col">
+        {/* Name block — behind portrait */}
+        <div className="relative flex flex-1 flex-col items-center justify-center">
           <motion.p
-            aria-hidden
-            initial={
-              prefersReducedMotion
-                ? { opacity: 0.22, rotate: -8 }
-                : { opacity: 0, rotate: -14, y: 20 }
-            }
-            animate={{ opacity: 0.22, rotate: -8, y: 0 }}
-            transition={{ duration: 1.1, delay: 0.1, ease }}
-            className="origin-left font-[family-name:var(--font-sue-ellen)] text-[clamp(4.5rem,16vw,11rem)] leading-[0.95] tracking-[0.02em] text-ink select-none"
-          >
-            Hi. If you&apos;re new here..
-          </motion.p>
-          <motion.p
-            aria-hidden
-            initial={
-              prefersReducedMotion
-                ? { opacity: 0.22, rotate: -8 }
-                : { opacity: 0, rotate: -14, y: 20 }
-            }
-            animate={{ opacity: 0.22, rotate: -8, y: 0 }}
-            transition={{ duration: 1.1, delay: 0.18, ease }}
-            className="origin-left mt-[-0.1em] font-[family-name:var(--font-sue-ellen)] text-[clamp(4.5rem,16vw,11rem)] leading-[0.95] tracking-[0.02em] text-ink select-none"
+            style={{ x: introX }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease }}
+            className="absolute top-[28%] left-0 z-[5] font-[family-name:var(--font-imbue)] text-[clamp(4rem,9vw,8rem)] tracking-[0.01em] text-black/60 lowercase md:top-[0%] md:left-[-2%]"
           >
             my name is
           </motion.p>
-        </motion.div>
 
-        {/* CTAs under "my name is" */}
-        <motion.div
-          className="absolute top-[82%] left-[4%] z-40 flex flex-col items-start gap-3 md:top-[78%] md:left-[6%]"
-        >
-          <motion.a
-            href="/resume.pdf"
-            download
-            initial={
-              prefersReducedMotion
-                ? { opacity: 1, scale: 1 }
-                : { opacity: 0, scale: 0 }
-            }
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 420,
-              damping: 14,
-              delay: 0.55,
-            }}
-            className="inline-flex items-center gap-2.5 rounded-full bg-[#5c3d2e] px-5 py-2.5 text-base font-[family-name:var(--font-chicken-pie)] tracking-[0.04em] transition hover:bg-[#4a3124]"
-            style={{ color: "var(--bg)" }}
+          <motion.div
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.15, ease }}
+            className="pointer-events-none absolute left-1/2 z-[8] w-screen -translate-x-1/2"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/icons/resume_trans.png"
-              alt=""
-              width={20}
-              height={20}
-              className="h-5 w-5 shrink-0 object-contain"
-            />
-            Download resume
-          </motion.a>
-          <motion.a
-            href="mailto:hello@example.com"
-            initial={
-              prefersReducedMotion
-                ? { opacity: 1, scale: 1 }
-                : { opacity: 0, scale: 0 }
-            }
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 420,
-              damping: 14,
-              delay: 0.7,
-            }}
-            className="inline-flex items-center gap-2.5 rounded-full bg-[#5c3d2e] px-5 py-2.5 text-base font-[family-name:var(--font-chicken-pie)] tracking-[0.04em] transition hover:bg-[#4a3124]"
-            style={{ color: "var(--bg)" }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/icons/bird_tans.png"
-              alt=""
-              width={20}
-              height={20}
-              className="h-5 w-5 shrink-0 object-contain"
-            />
-            Contact me
-          </motion.a>
-        </motion.div>
+            <motion.p
+              aria-hidden
+              style={{ x: nameX, opacity: nameOpacity }}
+              className="w-full text-center font-[family-name:var(--font-serif)] text-[clamp(5.5rem,18vw,22rem)] leading-[0.8] tracking-[-0.1em] whitespace-nowrap text-ink select-none"
+            >
+              Aali<span className="italic">yah</span> Pir
+              <span className="italic">ani</span>
+            </motion.p>
+          </motion.div>
 
-        {/* First name — right-aligned with last name, behind photo */}
-        <motion.div
-          style={{ x: aaliyahAway }}
-          className="pointer-events-none absolute top-[36%] right-[2%] z-10 md:top-[32%] md:right-0"
-        >
+          <motion.div
+            style={{ x: locationX, opacity: locationOpacity }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.35, ease }}
+            className="pointer-events-none absolute top-[58%] right-[2%] z-[25] text-right font-[family-name:var(--font-montserrat)] text-lg leading-tight tracking-tight text-ink lowercase md:top-[75%] md:right-[0%] md:text-2xl"
+          >
+            <p>born in calgary</p>
+            <p>building in toronto</p>
+          </motion.div>
+        </div>
+
+        {/* Bottom row */}
+        <div className="relative z-30 mt-auto flex items-end justify-between gap-6 pb-2">
+          {/* CTAs — bottom left */}
+          <motion.div
+            style={{ opacity: ctaOpacity, y: ctaY }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.45, ease }}
+            className="flex translate-x-4 -translate-y-4 flex-col items-start gap-3 md:translate-x-8 md:-translate-y-6"
+          >
+            <a
+              href="/resume.pdf"
+              download
+              style={{ color: "#ffffff" }}
+              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white bg-[#825e4c] px-7 py-3 text-sm tracking-[0.08em] lowercase shadow-[0_2px_8px_rgba(255,255,255,0.35),0_4px_12px_rgba(130,94,76,0.15)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-white hover:bg-[#6f4f3f] hover:shadow-[0_3px_10px_rgba(255,255,255,0.45),0_6px_16px_rgba(130,94,76,0.2)] active:translate-y-0 md:px-8 md:py-3.5 md:text-base"
+            >
+              <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-[-2px]">
+                resume
+              </span>
+              <span
+                aria-hidden
+                className="relative z-10 inline-block translate-x-[-4px] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+              >
+                →
+              </span>
+            </a>
+            <a
+              href="mailto:hello@example.com"
+              style={{ color: "#ffffff" }}
+              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white bg-[#825e4c] px-7 py-3 text-sm tracking-[0.08em] lowercase shadow-[0_2px_8px_rgba(255,255,255,0.35),0_4px_12px_rgba(130,94,76,0.15)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-white hover:bg-[#6f4f3f] hover:shadow-[0_3px_10px_rgba(255,255,255,0.45),0_6px_16px_rgba(130,94,76,0.2)] active:translate-y-0 md:px-8 md:py-3.5 md:text-base"
+            >
+              <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-[-2px]">
+                contact
+              </span>
+              <span
+                aria-hidden
+                className="relative z-10 inline-block translate-x-[-4px] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+              >
+                →
+              </span>
+            </a>
+          </motion.div>
+
+          {/* Greeting — bottom right */}
           <motion.p
             aria-hidden
-            initial={prefersReducedMotion ? { x: 0 } : { x: "calc(-100vw - 100%)" }}
-            animate={{ x: 0 }}
-            transition={{ duration: 1.2, delay: 0.2, ease }}
-            className="text-right font-[family-name:var(--font-serif)] text-[clamp(5rem,22vw,13rem)] leading-[0.82] tracking-[-0.01em] text-ink underline decoration-from-font underline-offset-[0.08em] select-none"
+            style={{ y: greetingY, opacity: greetingOpacity }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.55, ease }}
+            className="origin-bottom-right -translate-y-12 translate-x-4 -rotate-[12deg] pb-1 font-[family-name:var(--font-sue-ellen)] text-[clamp(2.5rem,6vw,4.5rem)] leading-none tracking-[0.02em] text-[#c4b8a8] lowercase select-none md:-translate-y-16 md:translate-x-8"
           >
-            Aali<span className="italic">yah</span>
+            i&apos;m so glad you&apos;re here :)
           </motion.p>
-        </motion.div>
-
-        {/* Last name — right side, in front */}
-        <motion.div
-          style={{ x: piraniAway }}
-          className="pointer-events-none absolute right-[2%] bottom-[6%] z-30 md:right-0 md:bottom-[2%]"
-        >
-          <motion.p
-            aria-hidden
-            initial={prefersReducedMotion ? { x: 0, opacity: 0.92 } : { x: "70vw", opacity: 0.92 }}
-            animate={{ x: 0 }}
-            transition={{ duration: 1.05, delay: 0.35, ease }}
-            className="text-right font-[family-name:var(--font-serif)] text-[clamp(4rem,18vw,11rem)] leading-[0.82] tracking-[-0.01em] text-ink select-none"
-          >
-            Pirani
-          </motion.p>
-        </motion.div>
+        </div>
       </div>
-
-      {/* Bottom credits */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.7, delay: 0.65, ease }}
-        className="relative z-40 mt-auto flex items-end justify-between pt-4 text-[10px] tracking-[0.14em] text-ink uppercase md:text-xs"
-      >
-        <p>Calgary</p>
-        <p className="text-right">Toronto</p>
-      </motion.div>
     </section>
   );
 }

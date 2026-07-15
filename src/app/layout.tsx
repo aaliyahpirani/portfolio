@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Playfair_Display, Syne } from "next/font/google";
+import { DM_Sans, Montserrat, Playfair_Display, Syne } from "next/font/google";
 import { Nav } from "@/components/Nav";
 import "./globals.css";
 
@@ -22,6 +22,12 @@ const serif = Playfair_Display({
   style: ["normal", "italic"],
 });
 
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
 export const metadata: Metadata = {
   title: "Aaliyah Pirani — Portfolio",
   description:
@@ -36,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${sans.variable} ${serif.variable} h-full`}
+      className={`${display.variable} ${sans.variable} ${serif.variable} ${montserrat.variable} h-full`}
     >
       <body className="min-h-full antialiased">
         <Nav />

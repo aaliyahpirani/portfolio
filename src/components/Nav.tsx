@@ -7,39 +7,26 @@ import { motion } from "framer-motion";
 
 const links = [
   { href: "/#home", id: "home", label: "Home" },
-  { href: "/#about", id: "about", label: "About me" },
+  { href: "/#about", id: "about", label: "About" },
   { href: "/#at-a-glance", id: "at-a-glance", label: "At a glance" },
+  { href: "/work", id: "work", label: "Work" },
 ];
 
 export function Nav() {
   const pathname = usePathname();
   const [activeId, setActiveId] = useState("home");
-  const [showNav, setShowNav] = useState(false);
 
   useEffect(() => {
     if (pathname !== "/") {
-      setShowNav(true);
+      setActiveId(pathname.startsWith("/work") ? "work" : "");
       return;
     }
 
-    setShowNav(false);
+    setActiveId("home");
 
-    const about = document.getElementById("about");
-    const sections = links
-      .map((link) => document.getElementById(link.id))
+    const sections = ["home", "about", "at-a-glance"]
+      .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => Boolean(el));
-
-    if (!about) return;
-
-    // Show nav only once About me reaches the upper part of the viewport
-    const updateVisibility = () => {
-      const top = about.getBoundingClientRect().top;
-      setShowNav(top < window.innerHeight * 0.4);
-    };
-
-    updateVisibility();
-    window.addEventListener("scroll", updateVisibility, { passive: true });
-    window.addEventListener("resize", updateVisibility);
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -59,41 +46,31 @@ export function Nav() {
 
     sections.forEach((section) => observer.observe(section));
 
-    return () => {
-      window.removeEventListener("scroll", updateVisibility);
-      window.removeEventListener("resize", updateVisibility);
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, [pathname]);
 
   return (
     <motion.header
       initial={{ y: "-110%", opacity: 0 }}
-      animate={
-        showNav
-          ? { y: 0, opacity: 1 }
-          : { y: "-110%", opacity: 0 }
-      }
+      animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed inset-x-0 top-0 z-50 border-b border-line bg-bg/90 backdrop-blur-md ${
-        showNav ? "pointer-events-auto" : "pointer-events-none"
-      }`}
+      className="pointer-events-auto fixed inset-x-0 top-0 z-[100] border-b border-line/40 bg-bg/40 backdrop-blur-sm"
     >
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-end px-5 py-4 md:px-8">
-        <nav className="flex items-center gap-5 text-sm text-muted md:gap-8">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-end px-5 py-3.5 md:px-10 md:py-4">
+        <nav className="flex items-center gap-8 font-[family-name:var(--font-montserrat)] text-[11px] tracking-[0.2em] text-ink/55 uppercase md:gap-12 md:text-xs">
           {links.map((link) => {
-            const active = pathname === "/" && activeId === link.id;
+            const active = activeId === link.id;
             return (
               <Link
                 key={link.id}
                 href={link.href}
-                className="relative transition-colors hover:text-ink"
+                className="relative py-1 transition-colors duration-300 hover:text-ink"
               >
                 <span className={active ? "text-ink" : undefined}>{link.label}</span>
                 {active ? (
                   <motion.span
                     layoutId="nav-underline"
-                    className="absolute -bottom-1 left-0 h-px w-full bg-accent"
+                    className="absolute bottom-0 left-0 h-px w-full bg-ink/40"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 ) : null}

@@ -121,7 +121,7 @@ body::before {
   background-size: 200px 200px;
 }
 
-body > * {
+body > *:not(header) {
   position: relative;
   z-index: 1;
 }
