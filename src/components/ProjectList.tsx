@@ -25,13 +25,13 @@ export function ProjectList({ projects }: ProjectListProps) {
           className="group grid gap-6 border-t border-line pt-8 md:grid-cols-12 md:gap-10"
         >
           <div className="md:col-span-5">
-            <p className="text-sm tracking-[0.14em] text-muted uppercase">
+            <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-[0.14em] text-muted uppercase">
               {project.category} · {project.year}
             </p>
-            <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl leading-none tracking-[-0.03em] md:text-5xl">
+            <h2 className="mt-3 font-[family-name:var(--font-serif)] text-4xl leading-none tracking-[-0.03em] md:text-5xl">
               {project.title}
             </h2>
-            <p className="mt-4 max-w-md text-muted">{project.description}</p>
+            <p className="mt-4 max-w-md font-[family-name:var(--font-montserrat)] text-muted">{project.description}</p>
           </div>
 
           <div className="relative aspect-[16/10] overflow-hidden md:col-span-7">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Montserrat, Playfair_Display, Syne } from "next/font/google";
+import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
 import "./globals.css";
 
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body className="min-h-full antialiased">
         <Nav />
         <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

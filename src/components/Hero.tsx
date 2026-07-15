@@ -88,7 +88,7 @@ export function Hero() {
   const greetingOpacity = useTransform(
     smooth,
     [0, 0.5],
-    prefersReducedMotion ? [1, 1] : [1, 0],
+    prefersReducedMotion ? [0.5, 0.5] : [0.5, 0],
   );
   const ctaOpacity = useTransform(
     smooth,
@@ -105,8 +105,12 @@ export function Hero() {
     <section
       id="home"
       ref={sectionRef}
-      className="relative flex h-[100svh] scroll-mt-24 flex-col overflow-hidden bg-bg px-5 pt-8 pb-8 md:px-10 md:pt-10 md:pb-10"
+      className="relative flex h-[100svh] scroll-mt-24 flex-col overflow-hidden bg-bg-deep px-5 pt-8 pb-8 md:px-10 md:pt-10 md:pb-10"
     >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-transparent via-transparent to-[rgba(18,24,31,0.07)]"
+      />
       <h1 className="sr-only">Aaliyah Pirani</h1>
 
       {/* Corner flowers — top right, oversized and cropped */}
@@ -177,6 +181,22 @@ export function Hero() {
         </motion.div>
       </motion.div>
 
+      {/* Descriptor — right of portrait */}
+      <motion.p
+        aria-hidden
+        style={{ y: greetingY, opacity: greetingOpacity }}
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.55, ease }}
+        className="pointer-events-none absolute bottom-[10%] left-[58%] z-30 max-w-[16rem] text-left font-[family-name:var(--font-montserrat)] text-[clamp(1.1rem,2.2vw,1.5rem)] leading-snug tracking-tight text-[#6b5344]/65 lowercase md:bottom-[12%] md:left-[60%] md:max-w-[18rem]"
+      >
+        software engineer.
+        <br />
+        researcher.
+        <br />
+        content creator.
+      </motion.p>
+
       <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col">
         {/* Name block — behind portrait */}
         <div className="relative flex flex-1 flex-col items-center justify-center">
@@ -185,7 +205,7 @@ export function Hero() {
             initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease }}
-            className="absolute top-[28%] left-0 z-[5] font-[family-name:var(--font-imbue)] text-[clamp(4rem,9vw,8rem)] tracking-[0.01em] text-black/60 lowercase md:top-[0%] md:left-[-2%]"
+            className="absolute top-[28%] left-0 z-[5] font-[family-name:var(--font-imbue)] text-[clamp(2.5rem,7vw,10rem)] tracking-[0.04em] text-black/60 lowercase md:top-[4%] md:left-[-2%]"
           >
             my name is
           </motion.p>
@@ -232,7 +252,7 @@ export function Hero() {
               href="/resume.pdf"
               download
               style={{ color: "#ffffff" }}
-              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white bg-[#825e4c] px-7 py-3 text-sm tracking-[0.08em] lowercase shadow-[0_2px_8px_rgba(255,255,255,0.35),0_4px_12px_rgba(130,94,76,0.15)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-white hover:bg-[#6f4f3f] hover:shadow-[0_3px_10px_rgba(255,255,255,0.45),0_6px_16px_rgba(130,94,76,0.2)] active:translate-y-0 md:px-8 md:py-3.5 md:text-base"
+              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white bg-[#825e4c] px-7 py-3 font-[family-name:var(--font-montserrat)] text-sm tracking-[0.08em] lowercase shadow-[0_2px_8px_rgba(255,255,255,0.35),0_4px_12px_rgba(130,94,76,0.15)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-white hover:bg-[#6f4f3f] hover:shadow-[0_3px_10px_rgba(255,255,255,0.45),0_6px_16px_rgba(130,94,76,0.2)] active:translate-y-0 md:px-8 md:py-3.5 md:text-base"
             >
               <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-[-2px]">
                 resume
@@ -247,7 +267,7 @@ export function Hero() {
             <a
               href="mailto:hello@example.com"
               style={{ color: "#ffffff" }}
-              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white bg-[#825e4c] px-7 py-3 text-sm tracking-[0.08em] lowercase shadow-[0_2px_8px_rgba(255,255,255,0.35),0_4px_12px_rgba(130,94,76,0.15)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-white hover:bg-[#6f4f3f] hover:shadow-[0_3px_10px_rgba(255,255,255,0.45),0_6px_16px_rgba(130,94,76,0.2)] active:translate-y-0 md:px-8 md:py-3.5 md:text-base"
+              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white bg-[#825e4c] px-7 py-3 font-[family-name:var(--font-montserrat)] text-sm tracking-[0.08em] lowercase shadow-[0_2px_8px_rgba(255,255,255,0.35),0_4px_12px_rgba(130,94,76,0.15)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-white hover:bg-[#6f4f3f] hover:shadow-[0_3px_10px_rgba(255,255,255,0.45),0_6px_16px_rgba(130,94,76,0.2)] active:translate-y-0 md:px-8 md:py-3.5 md:text-base"
             >
               <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-[-2px]">
                 contact
@@ -260,18 +280,6 @@ export function Hero() {
               </span>
             </a>
           </motion.div>
-
-          {/* Greeting — bottom right */}
-          <motion.p
-            aria-hidden
-            style={{ y: greetingY, opacity: greetingOpacity }}
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.55, ease }}
-            className="origin-bottom-right -translate-y-12 translate-x-4 -rotate-[12deg] pb-1 font-[family-name:var(--font-sue-ellen)] text-[clamp(2.5rem,6vw,4.5rem)] leading-none tracking-[0.02em] text-[#c4b8a8] lowercase select-none md:-translate-y-16 md:translate-x-8"
-          >
-            i&apos;m so glad you&apos;re here :)
-          </motion.p>
         </div>
       </div>
     </section>
