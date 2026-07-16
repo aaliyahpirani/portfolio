@@ -145,7 +145,7 @@ export function Hero() {
       {/* Portrait — bottom-aligned, head sits on the name */}
       <motion.div
         style={{ y: portraitY, scale: portraitScale }}
-        className="pointer-events-none absolute bottom-0 left-1/2 z-20 h-[95%] w-[min(95vw,40rem)] -translate-x-1/2 md:h-[100%] md:w-[min(56vw,48rem)]"
+        className="pointer-events-none absolute bottom-0 left-1/2 z-20 h-[105%] w-[min(110vw,52rem)] -translate-x-1/2 md:h-[112%] md:w-[min(68vw,62rem)]"
       >
         <motion.div
           initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
@@ -170,13 +170,13 @@ export function Hero() {
           className="relative h-full w-full"
         >
           <Image
-            src="/images/portrait.png"
+            src="/images/beachportrait.png"
             alt="Portrait of Aaliyah Pirani"
             fill
             priority
             quality={100}
             className="object-contain object-bottom mix-blend-lighten"
-            sizes="(max-width: 768px) 95vw, 48rem"
+            sizes="(max-width: 768px) 110vw, 62rem"
           />
         </motion.div>
       </motion.div>
@@ -219,10 +219,16 @@ export function Hero() {
             <motion.p
               aria-hidden
               style={{ x: nameX, opacity: nameOpacity }}
-              className="w-full text-center font-[family-name:var(--font-serif)] text-[clamp(5.5rem,18vw,22rem)] leading-[0.8] tracking-[-0.1em] whitespace-nowrap text-ink select-none"
+              className="flex w-full items-baseline justify-center gap-[0.12em] px-2 py-[0.12em] font-[family-name:var(--font-serif)] text-[clamp(4.75rem,15vw,18rem)] leading-none tracking-[-0.1em] whitespace-nowrap text-ink select-none"
             >
-              Aali<span className="italic">yah</span> Pir
-              <span className="italic">ani</span>
+              <span className="opacity-[0.28]">
+                r<span className="italic">Pirani </span>
+              </span>
+              <span>
+                 Aali<span className="italic">yah</span> Pir
+                <span className="italic">ani</span>
+              </span>
+              <span className="opacity-[0.28]">Aaliyah</span>
             </motion.p>
           </motion.div>
 

@@ -19,7 +19,6 @@ const projects: SoftwareProject[] = [
       "GPU-accelerated simulation built on FlexiCubes and NVIDIA Warp, extending an existing NVIDIA deformable-body pipeline — stretching and sculpting — with a tearing force model to reproduce soft-tissue rupture during surgery and laser ablation. Used to visualize skin tearing and train robotic manipulation policies at the MedCVR Lab, University of Toronto.",
     tech: ["Python", "NVIDIA Warp", "FlexiCubes", "GPU", "Simulation"],
     href: "https://github.com/aaliyahpirani/medcvr",
-    device: "desktop",
     accent: "#0f6e6a",
   },
   {
@@ -36,7 +35,6 @@ const projects: SoftwareProject[] = [
       "Embedded",
     ],
     href: "https://github.com/aaliyahpirani/BearWithMe",
-    device: "embedded",
     accent: "#825e4c",
   },
   {
@@ -47,7 +45,6 @@ const projects: SoftwareProject[] = [
       "Group dining app that resolves restaurant deadlocks through a five-stage session: preference capture, vibe check, AI keyword generation, parallel swipe filtering, and blind voting. Post-meal feedback aggregates per-cuisine and per-tag statistics into each user's profile, sharpening Gemini prompts over time.",
     tech: ["Next.js", "Node.js", "Gemini", "Foursquare", "MongoDB"],
     href: "https://github.com/aaliyahpirani/palate_",
-    device: "phone",
     accent: "#c45c3e",
   },
   {
@@ -58,8 +55,7 @@ const projects: SoftwareProject[] = [
       "Personal project built out of curiosity — a feedforward neural network implemented with only NumPy, using sigmoid activations, backpropagation, and stochastic gradient descent. Trained on the MNIST handwritten digit dataset; my first hands-on entry into machine learning and how networks learn from data.",
     tech: ["Python", "NumPy", "MNIST", "Machine learning"],
     href: "https://github.com/aaliyahpirani/neuralnet-from-scratch",
-    device: "laptop",
-    accent: "#5a4fcf",
+    accent: "#6b5344",
   },
   {
     year: "November–December 2025",
@@ -69,7 +65,6 @@ const projects: SoftwareProject[] = [
       "Team recipe app built in Java by six developers, structured around Clean Architecture and SOLID principles. Integrates the Spoonacular API for search and discovery, with account-based saving, custom recipe creation, portion editing, tagging, meal planning, and dietary filtering — my first large-scale exposure to layered design and maintainable object-oriented code.",
     tech: ["Java", "MongoDB", "Spoonacular API", "Clean Architecture"],
     href: "https://github.com/aaliyahpirani/snack-overflow",
-    device: "tablet",
     accent: "#3d7a4f",
   },
   {
@@ -80,7 +75,6 @@ const projects: SoftwareProject[] = [
       "Flutter mobile app built with Engineers Without Borders UofT in partnership with CGEN, used by water quality testers in Mexico to capture and store field measurements. Designed for intuitive on-the-ground use in low-friction workflows; I owned the login and authentication system and contributed to the broader UX for reliable data entry and storage.",
     tech: ["Dart", "Flutter", "Mobile", "Authentication"],
     href: "https://github.com/ewbuoft/aqualens-2425",
-    device: "phone",
     accent: "#2f6fad",
   },
 ];

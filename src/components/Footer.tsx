@@ -5,9 +5,7 @@ export function Footer() {
         <p className="font-[family-name:var(--font-montserrat)] text-xs tracking-[0.1em] text-muted uppercase">
           © {new Date().getFullYear()} Aaliyah Pirani. All rights reserved.
         </p>
-        <p className="font-[family-name:var(--font-montserrat)] text-xs tracking-[0.08em] text-muted">
-          Aaliyah Pirani™
-        </p>
+       
       </div>
     </footer>
   );
