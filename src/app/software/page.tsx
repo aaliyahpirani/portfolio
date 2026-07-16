@@ -1,4 +1,8 @@
 import { FadeIn } from "@/components/FadeIn";
+import {
+  SoftwareProjectShowcase,
+  type SoftwareProject,
+} from "@/components/SoftwareProjectShowcase";
 
 export const metadata = {
   title: "Software — Aaliyah Pirani",
@@ -6,30 +10,78 @@ export const metadata = {
     "Software projects and research — medical robotics, simulation, and full-stack work.",
 };
 
-const projects = [
+const projects: SoftwareProject[] = [
   {
-    year: "2025",
+    year: "May 2026–present",
     category: "Research",
-    title: "Deformable object simulation",
+    title: "Deformable materials simulation",
     description:
-      "Simulation of deformable objects for medical robotics at the MedCVR Lab, University of Toronto.",
-    tech: ["Python", "C++", "Simulation"],
+      "GPU-accelerated simulation built on FlexiCubes and NVIDIA Warp, extending an existing NVIDIA deformable-body pipeline — stretching and sculpting — with a tearing force model to reproduce soft-tissue rupture during surgery and laser ablation. Used to visualize skin tearing and train robotic manipulation policies at the MedCVR Lab, University of Toronto.",
+    tech: ["Python", "NVIDIA Warp", "FlexiCubes", "GPU", "Simulation"],
+    href: "https://github.com/aaliyahpirani/medcvr",
+    device: "desktop",
+    accent: "#0f6e6a",
+  },
+  {
+    year: "November 2025",
+    category: "Project",
+    title: "Bear With Me",
+    description:
+      "Pronunciation analysis tool for young children with speech difficulties, embedded in a stuffed bear via Raspberry Pi to keep interaction off screens. Captures speech through an onboard microphone, evaluates pronunciation with Azure's Speech Pronunciation Assessment API, and responds using ElevenLabs text-to-speech. Includes a parent dashboard for tracking progress over time.",
+    tech: [
+      "Raspberry Pi",
+      "Azure Speech",
+      "ElevenLabs",
+      "Python",
+      "Embedded",
+    ],
+    href: "https://github.com/aaliyahpirani/BearWithMe",
+    device: "embedded",
+    accent: "#825e4c",
+  },
+  {
+    year: "January 2026",
+    category: "Project",
+    title: "Palate",
+    description:
+      "Group dining app that resolves restaurant deadlocks through a five-stage session: preference capture, vibe check, AI keyword generation, parallel swipe filtering, and blind voting. Post-meal feedback aggregates per-cuisine and per-tag statistics into each user's profile, sharpening Gemini prompts over time.",
+    tech: ["Next.js", "Node.js", "Gemini", "Foursquare", "MongoDB"],
+    href: "https://github.com/aaliyahpirani/palate_",
+    device: "phone",
+    accent: "#c45c3e",
   },
   {
     year: "2025",
     category: "Project",
-    title: "Project name here",
+    title: "Neural network from scratch",
     description:
-      "Short description of what it does, the problem it solves, and what you built.",
-    tech: ["Tech", "Stack", "Here"],
+      "Personal project built out of curiosity — a feedforward neural network implemented with only NumPy, using sigmoid activations, backpropagation, and stochastic gradient descent. Trained on the MNIST handwritten digit dataset; my first hands-on entry into machine learning and how networks learn from data.",
+    tech: ["Python", "NumPy", "MNIST", "Machine learning"],
+    href: "https://github.com/aaliyahpirani/neuralnet-from-scratch",
+    device: "laptop",
+    accent: "#5a4fcf",
   },
   {
-    year: "2024",
-    category: "Project",
-    title: "Project name here",
+    year: "November–December 2025",
+    category: "Team project",
+    title: "SnackOverflow",
     description:
-      "Short description of what it does, the problem it solves, and what you built.",
-    tech: ["Tech", "Stack", "Here"],
+      "Team recipe app built in Java by six developers, structured around Clean Architecture and SOLID principles. Integrates the Spoonacular API for search and discovery, with account-based saving, custom recipe creation, portion editing, tagging, meal planning, and dietary filtering — my first large-scale exposure to layered design and maintainable object-oriented code.",
+    tech: ["Java", "MongoDB", "Spoonacular API", "Clean Architecture"],
+    href: "https://github.com/aaliyahpirani/snack-overflow",
+    device: "tablet",
+    accent: "#3d7a4f",
+  },
+  {
+    year: "2024–2025",
+    category: "Team project",
+    title: "Aqualens",
+    description:
+      "Flutter mobile app built with Engineers Without Borders UofT in partnership with CGEN, used by water quality testers in Mexico to capture and store field measurements. Designed for intuitive on-the-ground use in low-friction workflows; I owned the login and authentication system and contributed to the broader UX for reliable data entry and storage.",
+    tech: ["Dart", "Flutter", "Mobile", "Authentication"],
+    href: "https://github.com/ewbuoft/aqualens-2425",
+    device: "phone",
+    accent: "#2f6fad",
   },
 ];
 
@@ -49,37 +101,7 @@ export default function SoftwarePage() {
         </p>
       </FadeIn>
 
-      <ul className="mt-14 divide-y divide-line border-y border-line md:mt-20">
-        {projects.map((project, index) => (
-          <FadeIn key={`${project.year}-${project.title}`} delay={index * 0.06}>
-            <li className="grid gap-4 py-10 md:grid-cols-12 md:gap-10 md:py-12">
-              <div className="md:col-span-3">
-                <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-[0.14em] text-muted uppercase">
-                  {project.category} · {project.year}
-                </p>
-              </div>
-              <div className="md:col-span-9">
-                <h2 className="font-[family-name:var(--font-serif)] text-3xl leading-none tracking-[-0.03em] md:text-4xl">
-                  {project.title}
-                </h2>
-                <p className="mt-4 max-w-2xl font-[family-name:var(--font-montserrat)] text-muted md:text-lg">
-                  {project.description}
-                </p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {project.tech.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-line px-3.5 py-1 font-[family-name:var(--font-montserrat)] text-xs tracking-[0.08em] text-muted uppercase"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </li>
-          </FadeIn>
-        ))}
-      </ul>
+      <SoftwareProjectShowcase projects={projects} />
     </section>
   );
 }

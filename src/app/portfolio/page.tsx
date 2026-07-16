@@ -19,8 +19,8 @@ export default function PortfolioPage() {
           Collaborations & notable work.
         </h1>
         <p className="mt-6 max-w-xl font-[family-name:var(--font-montserrat)] text-lg text-muted">
-          Content, brand partnerships, and creative projects. Swap these
-          placeholders for your own collabs — each row animates in on scroll.
+          Content, brand partnerships, and creative work — tap through to watch
+          on Instagram.
         </p>
       </FadeIn>
 

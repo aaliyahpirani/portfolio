@@ -6,47 +6,41 @@ export type Project = {
   description: string;
   image: string;
   imageAlt: string;
+  href?: string;
 };
 
 export const projects: Project[] = [
   {
-    slug: "harbor-light",
-    title: "Harbor Light",
-    category: "Editorial",
-    year: "2025",
-    description: "A photo essay on coastal mornings and quiet infrastructure.",
-    image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Ocean waves at sunrise",
-  },
-  {
-    slug: "glass-rooms",
-    title: "Glass Rooms",
-    category: "Architecture",
-    year: "2025",
-    description: "Study of light moving through modern interiors.",
-    image:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Bright modern office interior",
-  },
-  {
-    slug: "field-notes",
-    title: "Field Notes",
-    category: "Brand",
+    slug: "first-year-advice",
+    title: "First-year university advice",
+    category: "Content",
     year: "2024",
-    description: "Identity system for a travel journal series.",
-    image:
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Mountain landscape with fog",
+    description:
+      "Carousel on lessons I wish I had known earlier — study habits, campus life, and navigating first year at university.",
+    image: "/images/portfolio-1.jpg",
+    imageAlt: "Advice I would have paid to know in my first year of university",
+    href: "https://www.instagram.com/p/DaLUfgoEcxo/",
   },
   {
-    slug: "night-market",
-    title: "Night Market",
-    category: "Documentary",
-    year: "2024",
-    description: "Color and motion after dark in a city market.",
-    image:
-      "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "City skyline at dusk",
+    slug: "day-in-my-life-uoft",
+    title: "Day in my life @ UofT",
+    category: "Content",
+    year: "2025",
+    description:
+      "Finals-season day-in-the-life reel as a CS and biology student — studying, routines, and life at the University of Toronto.",
+    image: "/images/portfolio-2.jpg",
+    imageAlt: "Day in my life as a 4.0 CS and biology student during finals at UofT",
+    href: "https://www.instagram.com/p/DXu14iwD3Zz/",
+  },
+  {
+    slug: "moft-wallet",
+    title: "MOFT Trackable Tripod Wallet",
+    category: "Brand partnership",
+    year: "2025",
+    description:
+      "Short-form review and storytelling for MOFT's trackable tripod wallet — product demo and creator-led brand content.",
+    image: "/images/portfolio-3.jpg",
+    imageAlt: "MOFT trackable tripod wallet brand collaboration",
+    href: "https://www.instagram.com/p/DZfvvKlxdWR/",
   },
 ];
