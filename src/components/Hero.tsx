@@ -38,22 +38,6 @@ export function Hero() {
     prefersReducedMotion ? [1, 1] : [1, 0.35],
   );
 
-  const flowersX = useTransform(
-    smooth,
-    [0, 1],
-    prefersReducedMotion ? ["0%", "0%"] : ["0%", "18%"],
-  );
-  const flowersY = useTransform(
-    smooth,
-    [0, 1],
-    prefersReducedMotion ? ["0%", "0%"] : ["0%", "-12%"],
-  );
-  const flowersRotate = useTransform(
-    smooth,
-    [0, 1],
-    prefersReducedMotion ? [0, 0] : [0, 8],
-  );
-
   const portraitY = useTransform(
     smooth,
     [0, 1],
@@ -113,34 +97,19 @@ export function Hero() {
       />
       <h1 className="sr-only">Aaliyah Pirani</h1>
 
-      {/* Corner flowers — top right, oversized and cropped */}
-      <motion.div
-        style={{ x: flowersX, y: flowersY, rotate: flowersRotate }}
-        className="pointer-events-none absolute -top-[18%] -right-[22%] z-10 h-[clamp(24rem,72vw,48rem)] w-[clamp(28rem,82vw,56rem)] md:-top-[17%] md:-right-[10%]"
-      >
-        <motion.div
-          animate={
-            prefersReducedMotion
-              ? undefined
-              : { y: [0, -10, 0], rotate: [0, -1.5, 0] }
-          }
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="relative h-full w-full"
-        >
+      {/* Background flower — behind everything */}
+      <div className="pointer-events-none absolute -bottom-[8%] left-1/2 z-0 h-[105%] w-[min(110vw,52rem)] -translate-x-3/5 opacity-35 md:-bottom-[10%] md:h-[112%] md:w-[min(68vw,62rem)]">
+        <div className="relative h-full w-full">
           <Image
-            src="/icons/cornerflowers.png"
+            src="/images/floer.png"
             alt=""
             fill
-            className="object-contain object-top-right mix-blend-lighten"
-            sizes="(max-width: 768px) 82vw, 56rem"
             priority
+            className="object-contain object-bottom"
+            sizes="(max-width: 768px) 110vw, 62rem"
           />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
       {/* Portrait — bottom-aligned, head sits on the name */}
       <motion.div
@@ -188,7 +157,7 @@ export function Hero() {
         initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.55, ease }}
-        className="pointer-events-none absolute bottom-[10%] left-[58%] z-30 max-w-[16rem] text-left font-[family-name:var(--font-montserrat)] text-[clamp(1.1rem,2.2vw,1.5rem)] leading-snug tracking-tight text-[#6b5344]/65 lowercase md:bottom-[12%] md:left-[60%] md:max-w-[18rem]"
+        className="pointer-events-none absolute bottom-[10%] left-[58%] z-30 max-w-[16rem] text-left font-[family-name:var(--font-montserrat)] text-[clamp(1.1rem,2.2vw,1.5rem)] leading-snug tracking-tight text-[#6b5344]/75 lowercase md:bottom-[12%] md:left-[60%] md:max-w-[18rem]"
       >
         software engineer.
         <br />
@@ -205,7 +174,7 @@ export function Hero() {
             initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease }}
-            className="absolute top-[28%] left-0 z-[5] font-[family-name:var(--font-imbue)] text-[clamp(2.5rem,7vw,10rem)] tracking-[0.04em] text-black/60 lowercase md:top-[4%] md:left-[-2%]"
+            className="absolute top-[25%] left-[4%] z-[5] font-[family-name:var(--font-imbue)] text-[clamp(2.75rem,7.5vw,10rem)] tracking-[0.04em] text-black/60 lowercase md:top-[2%] md:left-[2%]"
           >
             my name is
           </motion.p>
@@ -219,16 +188,18 @@ export function Hero() {
             <motion.p
               aria-hidden
               style={{ x: nameX, opacity: nameOpacity }}
-              className="flex w-full items-baseline justify-center gap-[0.12em] px-2 py-[0.12em] font-[family-name:var(--font-serif)] text-[clamp(4.75rem,15vw,18rem)] leading-none tracking-[-0.1em] whitespace-nowrap text-ink select-none"
+              className="flex w-full items-baseline justify-center gap-[0.35em] px-2 py-[0.12em] font-[family-name:var(--font-serif)] text-[clamp(6rem,17.5vw,22rem)] leading-none tracking-[-0.1em] whitespace-nowrap text-ink select-none"
             >
-              <span className="opacity-[0.28]">
+              {/* <span className="opacity-[0.28]">
                 r<span className="italic">Pirani </span>
+              </span>  */}
+              <span>
+                Aali<span className="italic">yah</span>
               </span>
               <span>
-                 Aali<span className="italic">yah</span> Pir
-                <span className="italic">ani</span>
+                Pir<span className="italic">ani</span>
               </span>
-              <span className="opacity-[0.28]">Aaliyah</span>
+              {/* <span className="opacity-[0.28]">Aaliyah</span>  */}
             </motion.p>
           </motion.div>
 
@@ -255,8 +226,8 @@ export function Hero() {
             className="flex translate-x-4 -translate-y-4 flex-col items-start gap-3 md:translate-x-8 md:-translate-y-6"
           >
             <a
-              href="/resume.pdf"
-              download
+              href="/documents/AaliyahPirani_Resume_TARA.pdf"
+              download="AaliyahPirani_Resume_TARA.pdf"
               style={{ color: "#ffffff" }}
               className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white bg-[#825e4c] px-7 py-3 font-[family-name:var(--font-montserrat)] text-sm tracking-[0.08em] lowercase shadow-[0_2px_8px_rgba(255,255,255,0.35),0_4px_12px_rgba(130,94,76,0.15)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-white hover:bg-[#6f4f3f] hover:shadow-[0_3px_10px_rgba(255,255,255,0.45),0_6px_16px_rgba(130,94,76,0.2)] active:translate-y-0 md:px-8 md:py-3.5 md:text-base"
             >

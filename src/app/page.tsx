@@ -202,12 +202,24 @@ export default function HomePage() {
 
       <section
         id="contact"
-        className="relative w-full scroll-mt-24 bg-bg-deep px-5 py-16 md:px-8 md:py-24"
+        className="relative w-full scroll-mt-24 overflow-hidden bg-bg-deep px-5 py-16 md:px-8 md:py-24"
       >
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(18,24,31,0.07)]"
         />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute top-1/2 left-1/2 z-0 h-[clamp(28rem,80vw,48rem)] w-[clamp(32rem,95vw,56rem)] -translate-x-1/2 -translate-y-1/2 opacity-[0.35]"
+        >
+          <Image
+            src="/images/aboutme_flower.png"
+            alt=""
+            fill
+            className="object-contain object-center mix-blend-multiply"
+            sizes="(max-width: 768px) 80vw, 56rem"
+          />
+        </div>
         <div className="relative z-10 mx-auto w-full max-w-3xl">
           <FadeIn>
             <h2 className="mt-3 font-[family-name:var(--font-serif)] text-4xl leading-none tracking-[-0.03em] md:text-5xl">

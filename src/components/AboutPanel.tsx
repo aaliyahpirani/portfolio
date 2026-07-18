@@ -160,20 +160,13 @@ export function AboutPanel() {
                   deformable objects for medical robotics.
                 </p>
                 <p>
-                  I got into tech because I loved math, but the part I enjoy most
-                  isn&apos;t just the technical side. It&apos;s the ideas behind
-                  the projects, the people I work with, and seeing something built
-                  from scratch become useful in the real world.
+                I've always chased experiences that push me to create new things and connect with people, from biotech research to building something through content; it's less about the field and more about the people and ideas along the way.
                 </p>
                 <p>
-                  I create content to share what I wish I knew earlier about
-                  university — it started as a way to help others and became a
-                  creative outlet for storytelling and design. And flying? I got
-                  my pilot license simply because I thought it was cool.
+                If something I build ends up useful to someone, that's the part that sticks with me.
                 </p>
                 <p>
-                  I&apos;m always looking for new things to learn, build, and
-                  explore.
+                  I&apos;m always looking for new things to learn and new people to meet. Let's connect!
                 </p>
               </div>
             </FadeIn>
